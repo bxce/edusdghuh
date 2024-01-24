@@ -1,0 +1,29 @@
+sudo apt install isc-dhcp-server /relay
+auto enp0s3
+iface enp0s3 inet static
+address 
+netmask
+gateway
+network
+broadcast
+
+subnet 192.168.2.0	netmask  255.255.255.0{
+	range 192.168.2.10 192.168.2.100	; 
+	range 192.168.2.150 192.168.2.254	; 
+	default-lease-time  7200		;
+	option domain-name-servers	 192.168.2.1,172.30.2.60	; 
+	option domain-name " redBCA" ; 
+	option routers 192.168.2.254; puerta de enlace
+	option broadcast-address 192.168.2.255;
+		}	
+reserva
+host nombremaquina {
+	hardware ethernet mac 00:00: ;
+	fixed-address 192.168.2.30 ;
+
+
+dhcpd -t
+service network
+
+relay enp0s8
+ 
