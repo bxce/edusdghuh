@@ -1,0 +1,41 @@
+sudo apt install bind9
+
+interface
+
+address
+netmask
+dns-nameservers
+
+zona
+
+named.conf.local default zones
+
+type master ;
+db.directa db.inversa
+allow-transfer{172.180.10.2;};
+allow-notify {172.180.10.2;};
+180.172.in-addr.arpa
+
+};
+
+directa db.local
+amnistia.org. in soa pedro.amnistia.org.
+;
+amnistia.org. in ns pedro.amnistia.org.
+pedro in a 172.180.10.1
+
+carles in CNAME felipe.amnistia.org.
+
+inversa db.127
+180.172.in-addr.arpa.
+;
+180.172.in-addr.arpa.
+
+sudo named-checkzone amnistia.org /etc/bind/db.directa
+sudo named-checkzone 180.172.in-addr.arpa /etc/bind/db.inversa
+sudo named-checkconf
+
+secundario
+type slave 
+$ORIGIN si.aministia.org.
+congreso	 in a 172.180.10.5 e inversa
